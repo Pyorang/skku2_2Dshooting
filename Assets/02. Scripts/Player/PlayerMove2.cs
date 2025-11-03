@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerMove2 : MonoBehaviour
 {
+    [Header("능력치")]
     public int Speed = 1;
     public int MaxSpeed = 10;
 
@@ -41,8 +42,6 @@ public class PlayerMove2 : MonoBehaviour
 
         Vector2 newPosition = position + direction * Speed * Time.deltaTime;     // 새로운 위치
 
-        newPosition.y = -1 * Mathf.Abs(newPosition.y);
-
         Camera cam = Camera.main;
 
         if (cam != null)
@@ -51,12 +50,14 @@ public class PlayerMove2 : MonoBehaviour
             float halfWidth = cam.orthographicSize * cam.aspect;
             Vector3 camPos = cam.transform.position;
 
-            float minX = camPos.x - halfWidth;
-            float maxX = camPos.x + halfWidth;
+            float minX = camPos.x - halfWidth - (float)transform.localScale.x / 2;
+            float maxX = camPos.x + halfWidth + (float)transform.localScale.x / 2;
             float minY = camPos.y - halfHeight;
-            float maxY = camPos.y + halfHeight;
 
-            newPosition.x = Mathf.Clamp(newPosition.x, minX, maxX);
+            if (newPosition.x < minX)
+                newPosition.x = maxX;
+            if(newPosition.x > maxX)
+                newPosition.x = minX;
             newPosition.y = Mathf.Clamp(newPosition.y, minY, 0);
         }
 
