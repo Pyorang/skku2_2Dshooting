@@ -5,42 +5,35 @@ public class PlayerMove2 : MonoBehaviour
     [Header("능력치")]
     public int Speed = 1;
     public int MaxSpeed = 10;
+    public int MinSpeed = 1;
+    public float SpeedMultiplier = 1.2f;
 
-    public void SpeedControl()
-    {
-        if(Input.GetKeyDown(KeyCode.Q))
-        {
-            Speed++;
-            if(Speed >= MaxSpeed)
-            {
-                Speed = MaxSpeed;
-            }
-        }
-
-        if(Input.GetKeyDown(KeyCode.E))
-        {
-            Speed--;
-            if(Speed < 1)
-            {
-                Speed = 1;
-            }
-        }
-    }
+    private bool BoostOn = false;
 
     // Update is called once per frame
     void Update()
     {
         SpeedControl();
 
-        float h = Input.GetAxis("Horizontal");    // 수평 입력에 대한 값을 -1 ~ 0 ~ 1로 가져온다.
-        float v = Input.GetAxis("Vertical");      // 수직 입력에 대한 값을 -1 ~ 0 ~ 1로 가져온다.
+        float h, v;
 
-        Vector2 direction = new Vector2(h, v);
-        Debug.Log($"direction : {direction.x} {direction.y}");
+        if(Input.GetKey(KeyCode.R))
+        {
+            h = -transform.position.x;
+            v = -transform.position.y;
+        }
 
-        Vector2 position = this.transform.position;     // 현재 위치
+        else
+        {
+            h = Input.GetAxisRaw("Horizontal");
+            v = Input.GetAxisRaw("Vertical");
+        }
 
-        Vector2 newPosition = position + direction * Speed * Time.deltaTime;     // 새로운 위치
+        Vector2 direction = new Vector2(h, v).normalized;
+
+        Vector2 position = this.transform.position;
+
+        Vector2 newPosition = BoostOn ? position + direction * SpeedMultiplier * Speed * Time.deltaTime : position + direction * Speed * Time.deltaTime;
 
         Camera cam = Camera.main;
 
@@ -62,5 +55,36 @@ public class PlayerMove2 : MonoBehaviour
         }
 
         transform.position = newPosition;
+    }
+
+    public void SpeedControl()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            Speed++;
+            if (Speed >= MaxSpeed)
+            {
+                Speed = MaxSpeed;
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Speed--;
+            if (Speed < MinSpeed)
+            {
+                Speed = MinSpeed;
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            BoostOn = true;
+        }
+
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            BoostOn = false;
+        }
     }
 }
