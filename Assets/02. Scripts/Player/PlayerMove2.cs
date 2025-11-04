@@ -14,7 +14,7 @@ public class PlayerMove2 : MonoBehaviour
 
     private const float OriginSnapThresholdSq = 0.001f;
 
-    void Update()
+    private void Update()
     {
         SpeedControl();
         HandleInput();
