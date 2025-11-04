@@ -1,54 +1,110 @@
 using UnityEngine;
 
-// ÇÃ·¹ÀÌ¾î ÀÌµ¿
-
 public class PlayerMove : MonoBehaviour
 {
-    // ¸ñÇ¥
-    // "Å°º¸µå ÀÔ·Â"¿¡ µû¶ó "¹æÇâ"À» ±¸ÇÏ°í ±× ¹æÇâÀ¸·Î ÀÌµ¿½ÃÅ°°í ½Í´Ù.
+    [Header("ëŠ¥ë ¥ì¹˜")]
+    public int Speed = 1;
+    public int MaxSpeed = 10;
+    public int MinSpeed = 1;
+    public float SpeedMultiplier = 1.2f;
 
-    // ±¸Çö ¼ø¼­ : 
-    // 1. Å°º¸µå ÀÔ·Â
-    // 2. ¹æÇâ ±¸ÇÏ´Â ¹æ¹ý
-    // 3. ÀÌµ¿
+    private bool _boostOn = false;
+    private float _horiziontalInput = 0f;
+    private float _verticalInput = 0f;
 
-    // ÇÊ¿ä ¼Ó¼º : 
-    public float Speed = 3;
+    private const float OriginSnapThresholdSq = 0.001f;
 
-    private void Start()
-    {
-        
-    }
-
-    // °ÔÀÓ ¿ÀºêÁ§Æ®°¡ °ÔÀÓÀ» ½ÃÀÛ ÈÄ ÃÖ´ëÇÑ ¸¹ÀÌ
     private void Update()
     {
-        // 1. Å°º¸µå ÀÔ·ÂÀ» °¨ÁöÇÑ´Ù.
-        // À¯´ÏÆ¼¿¡¼­´Â InputÀÌ¶ó°í ÇÏ´Â ¸ðµâÀÌ ÀÔ·Â¿¡ °üÇÑ ¸ðµç°ÍÀ» ´ã´çÇÑ´Ù.
-        float h = Input.GetAxis("Horizontal");    // ¼öÆò ÀÔ·Â¿¡ ´ëÇÑ °ªÀ» -1 ~ 0 ~ 1·Î °¡Á®¿Â´Ù.
-        float v = Input.GetAxis("Vertical");      // ¼öÁ÷ ÀÔ·Â¿¡ ´ëÇÑ °ªÀ» -1 ~ 0 ~ 1·Î °¡Á®¿Â´Ù.
+        SpeedControl();
+        HandleInput();
 
-        Debug.Log($"h : {h} v : {v}");
+        Vector2 direction = new Vector2(_horiziontalInput, _verticalInput).normalized;
+        Vector2 displacement = _boostOn ? direction * SpeedMultiplier * Speed : direction * Speed;
 
-        // 2. ÀÔ·ÂÀ¸·Î ºÎÅÍ ¹æÇâÀ» ±¸ÇÑ´Ù.
-        // º¤ÅÍ : Å©±â¿Í ¹æÇâÀ» Ç¥ÇöÇÏ´Â ¹°¸® °³³ä
-        Vector2 direction = new Vector2(h, v);
-        Debug.Log($"direction : {direction.x} {direction.y}");
+        Vector2 newPosition = (Vector2)transform.position + displacement * Time.deltaTime;
 
-        // 3. ±× ¹æÇâÀ¸·Î ÀÌµ¿ÇÑ´Ù.
-        Vector2 position = this.transform.position;     // ÇöÀç À§Ä¡
+        transform.position = CheckBoundary(newPosition);
+    }
 
-        // »õ·Î¿î À§Ä¡ = ÇöÀç À§Ä¡ + (¹æÇâ *  ¼Ó·Â) * ½Ã°£
-        // »õ·Î¿î À§Ä¡ = ÇöÀç À§Ä¡ + ¼Óµµ * ½Ã°£
-        // »õ·Î¿î À§Ä¡        ÇöÀç À§Ä¡  ¹æÇâ       ¼Ó·Â
-        Vector2 newPosition = position + direction * 3 * Time.deltaTime;     // »õ·Î¿î À§Ä¡
+    public void SpeedControl()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            Speed++;
+            if (Speed >= MaxSpeed)
+            {
+                Speed = MaxSpeed;
+            }
+        }
 
-        // Time.deltaTime: ÀÌÀü ÇÁ·¹ÀÓÀ¸·ÎºÎÅÍ ÇöÀç ÇÁ·¹ÀÓ±îÁö ½Ã°£ÀÌ ¾ó¸¶³ª Èê·¶´ÂÁö.. ³ªÅ¸³»´Â °ª
-        // 1ÃÊ/fps
-        // ÀÌµ¿¼Óµµ : 10
-        // ÄÄÇ»ÅÍ1 : 50FPS : Update -> ÃÊ´ç 50¹ø ½ÇÇà -> 10 * 50 = 500
-        // ÄÄÇ»ÅÍ2 : 100FPS : UPdate -> ÃÊ´ç 100¹ø ½ÇÇà -> 10 *100 = 1000
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Speed--;
+            if (Speed < MinSpeed)
+            {
+                Speed = MinSpeed;
+            }
+        }
 
-        transform.position = newPosition;               // »õ·Î¿î À§Ä¡·Î °»½Å
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            _boostOn = true;
+        }
+
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            _boostOn = false;
+        }
+    }
+
+    private void HandleInput()
+    {
+        if (Input.GetKey(KeyCode.R))
+        {
+            Vector2 currentPosition = transform.position;
+
+            if (currentPosition.sqrMagnitude < OriginSnapThresholdSq)
+            {
+                transform.position = Vector2.zero;
+                _horiziontalInput = 0f;
+                _verticalInput = 0f;
+            }
+            else
+            {
+                Vector2 directionToOrigin = -currentPosition.normalized;
+                _horiziontalInput = directionToOrigin.x;
+                _verticalInput = directionToOrigin.y;
+            }
+        }
+        else
+        {
+            _horiziontalInput = Input.GetAxisRaw("Horizontal");
+            _verticalInput = Input.GetAxisRaw("Vertical");
+        }
+    }
+
+    public Vector2 CheckBoundary(Vector2 newPosition)
+    {
+        Camera cam = Camera.main;
+
+        if (cam != null)
+        {
+            float halfHeight = cam.orthographicSize;
+            float halfWidth = cam.orthographicSize * cam.aspect;
+            Vector3 camPos = cam.transform.position;
+
+            float minX = camPos.x - halfWidth - (float)transform.localScale.x / 2;
+            float maxX = camPos.x + halfWidth + (float)transform.localScale.x / 2;
+            float minY = camPos.y - halfHeight;
+
+            if (newPosition.x < minX)
+                newPosition.x = maxX;
+            if (newPosition.x > maxX)
+                newPosition.x = minX;
+            newPosition.y = Mathf.Clamp(newPosition.y, minY, 0);
+        }
+
+        return newPosition;
     }
 }

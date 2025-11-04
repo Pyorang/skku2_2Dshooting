@@ -4,7 +4,7 @@ public class Bullet : MonoBehaviour
 {
     private float _bulletSpeed;
 
-    [Header("¿Ãµø")]
+    [Header("Ïù¥Îèô")]
     public float StartSpeed = 1;
     public float MaxSpeed = 7;
     public float ZeroToMaxSpeedTime = 1.2f;
@@ -24,10 +24,7 @@ public class Bullet : MonoBehaviour
         if (_bulletSpeed < MaxSpeed)
         {
             _bulletSpeed += ((MaxSpeed - StartSpeed) / ZeroToMaxSpeedTime) * Time.deltaTime;
-            if (_bulletSpeed > MaxSpeed)
-            {
-                _bulletSpeed = MaxSpeed;
-            }
+            _bulletSpeed = Mathf.Min(_bulletSpeed, MaxSpeed);
         }
     }
 }
