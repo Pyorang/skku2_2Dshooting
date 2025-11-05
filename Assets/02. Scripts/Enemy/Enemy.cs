@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [Header("중앙이 아닌 경우의 데미지 배율")]
+    public float NonCenterHitboxDamageMultiplier = 0.8f;
+
     [Header("스탯")]
     public float Speed = 3;
     public float Health = 100f;
@@ -15,6 +18,16 @@ public class Enemy : MonoBehaviour
     private void Move()
     {
         transform.position += Vector3.down * Speed * Time.deltaTime;
+    }
+
+    public float DamageMultiplierByDistance(float bulletXLocation)
+    {
+        float distance = Mathf.Abs(bulletXLocation - transform.position.x);
+        float distanceRatio = distance / (transform.localScale.x / 2f);
+        if (distanceRatio > 0.5f)
+            return NonCenterHitboxDamageMultiplier;
+        else
+            return 1f;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
