@@ -5,6 +5,9 @@ public class Bullet : MonoBehaviour
     [Header("총알 데미지")]
     public float Damage = 60f;
 
+    [Header("총알 크리티컬 확률")]
+    public int CriticalHit = 50;
+
     private float _bulletSpeed;
 
     [Header("이동")]
@@ -31,6 +34,21 @@ public class Bullet : MonoBehaviour
         }
     }
 
+    private bool GetCriticalHit()
+    {
+        int randomNumber = Random.Range(1, 101);
+        
+        if(randomNumber > CriticalHit)
+        {
+            return true;
+        }
+
+        else
+        {
+            return false;
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
@@ -42,6 +60,11 @@ public class Bullet : MonoBehaviour
             if (enemy!= null)
             {
                 enemy.Hit(Damage * enemy.DamageMultiplierByHitbox(transform.position.x));
+
+                if(GetCriticalHit())
+                {
+                    enemy.KnockBack();
+                }
             }
 
             Destroy(gameObject);

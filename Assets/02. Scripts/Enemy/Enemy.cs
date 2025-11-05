@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     [Header("스탯")]
     public float Speed = 3;
     [SerializeField] private float _health = 100f;
+    [SerializeField] private float _knockBackPower = 1;
 
     private void Update()
     {
@@ -23,6 +24,11 @@ public class Enemy : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void KnockBack()
+    {
+        transform.position += Vector3.up * _knockBackPower;
     }
 
     private void Move()
