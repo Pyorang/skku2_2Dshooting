@@ -4,14 +4,15 @@ public class EnemySpawner : MonoBehaviour
 {
     [Header("스폰 쿨타임")]
     private float _currentSpawnCoolTime;
-    public float _spawnCoolTime = 5f;
+    [SerializeField] private float _minSpawnCoolTime = 1f;
+    [SerializeField] private float _maxSpawnCoolTime = 3f;
 
     [Header("Enemy 프리팹")]
     [SerializeField] private GameObject _enemyPrfab;
 
     private void Start()
     {
-        _currentSpawnCoolTime = _spawnCoolTime;
+        _currentSpawnCoolTime = Random.Range(_minSpawnCoolTime, _maxSpawnCoolTime);
     }
     private void Update()
     {
@@ -19,7 +20,7 @@ public class EnemySpawner : MonoBehaviour
 
         if(_currentSpawnCoolTime <= 0)
         {
-            _currentSpawnCoolTime = _spawnCoolTime;
+            _currentSpawnCoolTime = Random.Range(_minSpawnCoolTime, _maxSpawnCoolTime);
             Instantiate(_enemyPrfab, transform);
         }
     }
