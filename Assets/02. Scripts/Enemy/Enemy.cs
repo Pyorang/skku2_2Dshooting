@@ -50,12 +50,7 @@ public class Enemy : MonoBehaviour
             // playerStat이 null일 가능성은 거의 없지만, 안전하게 처리
             if (playerStat != null)
             {
-                playerStat.Health -= 1;
-
-                if(playerStat.Health <= 0)
-                {
-                    Destroy(collision.gameObject);
-                }
+                playerStat.Hit(1);
             }
 
             Destroy(gameObject);
