@@ -8,11 +8,21 @@ public class Enemy : MonoBehaviour
 
     [Header("스탯")]
     public float Speed = 3;
-    public float Health = 100f;
+    [SerializeField] private float _health = 100f;
 
     private void Update()
     {
         Move();
+    }
+
+    public void Hit(float damage)
+    {
+        _health -= damage;
+
+        if(_health <= 0 )
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void Move()
@@ -20,7 +30,7 @@ public class Enemy : MonoBehaviour
         transform.position += Vector3.down * Speed * Time.deltaTime;
     }
 
-    public float DamageMultiplierByDistance(float bulletXLocation)
+    public float DamageMultiplierByHitbox(float bulletXLocation)
     {
         float distance = Mathf.Abs(bulletXLocation - transform.position.x);
         float distanceRatio = distance / (transform.localScale.x / 2f);
@@ -34,7 +44,7 @@ public class Enemy : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Player"))
         {
-            PlayerStat playerStat = collision.gameObject.GetComponent<PlayerStat>();
+            Player playerStat = collision.gameObject.GetComponent<Player>();
 
             // NOTE : CompareTag 메소드로 검사하였기 때문에
             // playerStat이 null일 가능성은 거의 없지만, 안전하게 처리

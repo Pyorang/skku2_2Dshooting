@@ -41,14 +41,7 @@ public class Bullet : MonoBehaviour
             // enemy가 null일 가능성은 거의 없지만, 안전하게 처리
             if (enemy!= null)
             {
-                enemy.Health -= Damage * enemy.DamageMultiplierByDistance(transform.position.x);
-                
-                Debug.Log(enemy.Health);
-
-                if (enemy.Health <= 0)
-                {
-                    Destroy(collision.gameObject);
-                }
+                enemy.Hit(Damage * enemy.DamageMultiplierByHitbox(transform.position.x));
             }
 
             Destroy(gameObject);
