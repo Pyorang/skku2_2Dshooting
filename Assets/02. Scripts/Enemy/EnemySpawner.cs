@@ -9,11 +9,11 @@ public class EnemySpawner : MonoBehaviour
 
     [Header("Enemy 프리팹")]
     [SerializeField] private GameObject _enemyPrefab;
-    [SerializeField] private GameObject _enemyBPrefab;
+    [SerializeField] private GameObject _chasingEnemyPrefab;
 
     [Header("스폰 확률")]
     public int EnemySpawnRate = 70;
-    public int EnemyBSpawnRate = 30;
+    public int ChasingEnemySpawnRate = 30;
 
     private void Start()
     {
@@ -41,11 +41,11 @@ public class EnemySpawner : MonoBehaviour
             return _enemyPrefab;
         }
 
-        randomNumber -= EnemyBSpawnRate;
+        randomNumber -= ChasingEnemySpawnRate;
 
-        if (randomNumber - EnemyBSpawnRate <0)
+        if (randomNumber - ChasingEnemySpawnRate <0)
         {
-            return _enemyBPrefab;
+            return _chasingEnemyPrefab;
         }
 
         return _enemyPrefab;

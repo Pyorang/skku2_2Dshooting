@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyB : Enemy
+public class ChasingEnemy : Enemy
 {
     // 목표 : 플레이어를 쫓아가는 적을 만들고 싶다.
 
