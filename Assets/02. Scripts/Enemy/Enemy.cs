@@ -1,3 +1,4 @@
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -16,6 +17,11 @@ public class Enemy : MonoBehaviour
         Move();
     }
 
+    private void Move()
+    {
+        transform.position += Vector3.down * Speed *Time.deltaTime;
+    }
+
     public void Hit(float damage)
     {
         _health -= damage;
@@ -29,11 +35,6 @@ public class Enemy : MonoBehaviour
     public void KnockBack()
     {
         transform.position += Vector3.up * _knockBackPower;
-    }
-
-    private void Move()
-    {
-        transform.position += Vector3.down * Speed * Time.deltaTime;
     }
 
     public float DamageMultiplierByHitbox(float bulletXLocation)
