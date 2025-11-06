@@ -11,8 +11,10 @@ GameObject:
   - component: {fileID: 9208514041391075578}
   - component: {fileID: 4793069740844587625}
   - component: {fileID: 8137882389935506957}
+  - component: {fileID: -894533571279349233}
   - component: {fileID: 3880628583417308066}
   - component: {fileID: 6283736382981097271}
+  - component: {fileID: 8168630902104880075}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -103,9 +105,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NonCenterHitboxDamageMultiplier: 0.8
-  Speed: 3
   _health: 100
   _knockBackPower: 2
+--- !u!114 &-894533571279349233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6244750318865009251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b272531092166694ab44ce6f62600834, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 3
 --- !u!50 &3880628583417308066
 Rigidbody2D:
   serializedVersion: 5
@@ -169,3 +183,16 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
+--- !u!114 &8168630902104880075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6244750318865009251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b272531092166694ab44ce6f62600834, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 3

@@ -8,19 +8,8 @@ public class Enemy : MonoBehaviour
     public float NonCenterHitboxDamageMultiplier = 0.8f;
 
     [Header("스탯")]
-    public float Speed = 3;
     [SerializeField] private float _health = 100f;
     [SerializeField] private float _knockBackPower = 1;
-
-    private void Update()
-    {
-        Move();
-    }
-
-    private void Move()
-    {
-        transform.position += Vector3.down * Speed *Time.deltaTime;
-    }
 
     public void Hit(float damage)
     {

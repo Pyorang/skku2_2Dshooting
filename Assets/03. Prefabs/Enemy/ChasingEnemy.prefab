@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1835817496964015469}
   - component: {fileID: 8623323529246929216}
-  - component: {fileID: 587697087356330183}
+  - component: {fileID: 3628430696948332291}
+  - component: {fileID: 5912063818257209185}
   - component: {fileID: 704140919300420070}
   - component: {fileID: 4718770345853440400}
   m_Layer: 0
@@ -90,7 +91,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &587697087356330183
+--- !u!114 &3628430696948332291
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -99,13 +100,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 8340329444801220858}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40bad119ad319a544bb465bf305f5967, type: 3}
+  m_Script: {fileID: 11500000, guid: c9788f7006c811242bce8d4f4c50ed6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   NonCenterHitboxDamageMultiplier: 0.8
-  Speed: 3
   _health: 100
   _knockBackPower: 1
+--- !u!114 &5912063818257209185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8340329444801220858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 381c18cf56e724c47b2c0c9381de73f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 3
 --- !u!50 &704140919300420070
 Rigidbody2D:
   serializedVersion: 5
