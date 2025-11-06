@@ -8,12 +8,10 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float _maxSpawnCoolTime = 3f;
 
     [Header("Enemy 프리팹")]
-    [SerializeField] private GameObject _enemyPrefab;
-    [SerializeField] private GameObject _chasingEnemyPrefab;
+    [SerializeField] private GameObject[] _enemyPrefabs;
 
     [Header("스폰 확률")]
-    public int EnemySpawnRate = 70;
-    public int ChasingEnemySpawnRate = 30;
+    public int[] EnemySpawnRate;
 
     private void Start()
     {
@@ -34,20 +32,16 @@ public class EnemySpawner : MonoBehaviour
     {
         int randomNumber = Random.Range(1, 101);
 
-        randomNumber -= EnemySpawnRate;
-
-        if(randomNumber < 0)
+        for(int i = 0; i < _enemyPrefabs.Length; i++)
         {
-            return _enemyPrefab;
+            randomNumber -= EnemySpawnRate[i];
+            
+            if(randomNumber <= 0)
+            {
+                return _enemyPrefabs[i];
+            }
         }
 
-        randomNumber -= ChasingEnemySpawnRate;
-
-        if (randomNumber - ChasingEnemySpawnRate <0)
-        {
-            return _chasingEnemyPrefab;
-        }
-
-        return _enemyPrefab;
+        return _enemyPrefabs[0];
     }
 }

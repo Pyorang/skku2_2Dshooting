@@ -135,7 +135,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &25101247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,10 +150,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _minSpawnCoolTime: 2
   _maxSpawnCoolTime: 5
-  _enemyPrefab: {fileID: 6244750318865009251, guid: af017d99a7bbf554687b0ed01bf6f7c3, type: 3}
-  _enemyBPrefab: {fileID: 8340329444801220858, guid: 815d3a186b85d74478e6a0043cd2b46a, type: 3}
-  EnemySpawnRate: 70
-  EnemyBSpawnRate: 30
+  _enemyPrefabs:
+  - {fileID: 6244750318865009251, guid: af017d99a7bbf554687b0ed01bf6f7c3, type: 3}
+  - {fileID: 8340329444801220858, guid: 815d3a186b85d74478e6a0043cd2b46a, type: 3}
+  - {fileID: 3428478421475955654, guid: 6619eb0c6f3d8b44a9b26eb786f0ecdb, type: 3}
+  EnemySpawnRate: 000000000000000064000000
 --- !u!4 &25101248
 Transform:
   m_ObjectHideFlags: 0
@@ -466,7 +467,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &822675857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -481,10 +482,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _minSpawnCoolTime: 2
   _maxSpawnCoolTime: 5
-  _enemyPrefab: {fileID: 6244750318865009251, guid: af017d99a7bbf554687b0ed01bf6f7c3, type: 3}
-  _enemyBPrefab: {fileID: 8340329444801220858, guid: 815d3a186b85d74478e6a0043cd2b46a, type: 3}
-  EnemySpawnRate: 70
-  EnemyBSpawnRate: 30
+  _enemyPrefabs:
+  - {fileID: 6244750318865009251, guid: af017d99a7bbf554687b0ed01bf6f7c3, type: 3}
+  - {fileID: 8340329444801220858, guid: 815d3a186b85d74478e6a0043cd2b46a, type: 3}
+  - {fileID: 3428478421475955654, guid: 6619eb0c6f3d8b44a9b26eb786f0ecdb, type: 3}
+  EnemySpawnRate: 000000000000000064000000
 --- !u!4 &822675858
 Transform:
   m_ObjectHideFlags: 0
@@ -1305,10 +1307,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _minSpawnCoolTime: 2
   _maxSpawnCoolTime: 5
-  _enemyPrefab: {fileID: 6244750318865009251, guid: af017d99a7bbf554687b0ed01bf6f7c3, type: 3}
-  _enemyBPrefab: {fileID: 8340329444801220858, guid: 815d3a186b85d74478e6a0043cd2b46a, type: 3}
-  EnemySpawnRate: 70
-  EnemyBSpawnRate: 30
+  _enemyPrefabs:
+  - {fileID: 6244750318865009251, guid: af017d99a7bbf554687b0ed01bf6f7c3, type: 3}
+  - {fileID: 8340329444801220858, guid: 815d3a186b85d74478e6a0043cd2b46a, type: 3}
+  - {fileID: 3428478421475955654, guid: 6619eb0c6f3d8b44a9b26eb786f0ecdb, type: 3}
+  EnemySpawnRate: 000000000000000064000000
 --- !u!4 &1636837075
 Transform:
   m_ObjectHideFlags: 0
