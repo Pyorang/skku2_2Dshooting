@@ -20,7 +20,7 @@ public class PlayerFire : MonoBehaviour
     [Header("재장전")]
     public bool _isReloading = false;
     public float ReloadingTime = 0.6f;
-    private float _currentReloadingTime = 0.6f;
+    private float _currentReloadingTime = 0f;
 
     private bool _isAutoFire = true;
 
@@ -89,12 +89,17 @@ public class PlayerFire : MonoBehaviour
 
     public void Reload()
     {
-        _currentReloadingTime -= Time.deltaTime;
-        if (_currentReloadingTime <= 0)
+        _currentReloadingTime += Time.deltaTime;
+        if (_currentReloadingTime >= ReloadingTime)
         {
             _isReloading = false;
-            _currentReloadingTime = 0.6f;
+            _currentReloadingTime = 0;
         }
+    }
+
+    public void IncreaseFiringRate(float ratio)
+    {
+        ReloadingTime *= (1 - ratio);
     }
 }
 
