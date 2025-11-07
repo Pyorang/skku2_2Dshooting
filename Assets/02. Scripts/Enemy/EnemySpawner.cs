@@ -24,7 +24,8 @@ public class EnemySpawner : MonoBehaviour
         if(_currentSpawnCoolTime <= 0)
         {
             _currentSpawnCoolTime = Random.Range(_minSpawnCoolTime, _maxSpawnCoolTime);
-            Instantiate(SelectRandomEnemy(), transform);
+            GameObject spawnedEnemy = Instantiate(SelectRandomEnemy());
+            spawnedEnemy.transform.position = transform.position;
         }
     }
 

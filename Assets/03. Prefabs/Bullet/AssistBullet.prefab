@@ -102,6 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 40
+  CriticalHit: 50
   StartSpeed: 15
   MaxSpeed: 15
   ZeroToMaxSpeedTime: 1

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 704140919300420070}
   - component: {fileID: 4718770345853440400}
   - component: {fileID: 7830648366010746547}
+  - component: {fileID: -8120435890501005267}
   m_Layer: 0
   m_Name: ChasingEnemy
   m_TagString: Enemy
@@ -107,6 +108,7 @@ MonoBehaviour:
   NonCenterHitboxDamageMultiplier: 0.8
   _health: 200
   _knockBackPower: 1
+  _itemDropRate: 50
 --- !u!114 &5912063818257209185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,3 +202,16 @@ MonoBehaviour:
   - {fileID: 5547180440764348431, guid: 48c0b900031d6e246b86e4bef5a70e80, type: 3}
   - {fileID: 7572252947094923499, guid: 6f9735069843248468aa8ce505de690f, type: 3}
   _itemSpawnRatios: 46000000140000000a000000
+--- !u!114 &-8120435890501005267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8340329444801220858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e4d52fb21d1b8c4d9b201aea819ff0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsFriendly: 1
