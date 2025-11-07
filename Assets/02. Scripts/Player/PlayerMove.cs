@@ -205,8 +205,8 @@ public class PlayerMove : MonoBehaviour
         for(int i = 0; i< nearestObjects.Length; i++)
         {
             result += nearestObjects[i].Object.GetComponent<AIManageableObject>().IsFriendly 
-                ? - (transform.position - nearestObjects[i].Object.transform.position) * (nearestObjects.Length - i) * 2
-                : (transform.position - nearestObjects[i].Object.transform.position) * (nearestObjects.Length - i) * 2;
+                ? - (transform.position - nearestObjects[i].Object.transform.position) * (Mathf.Pow(2,nearestObjects.Length - i))
+                : (transform.position - nearestObjects[i].Object.transform.position) * (Mathf.Pow(2, nearestObjects.Length - i));
         }
 
         if(result == Vector3.zero)
