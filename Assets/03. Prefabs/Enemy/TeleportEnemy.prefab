@@ -107,8 +107,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NonCenterHitboxDamageMultiplier: 0.8
-  _health: 800
+  _health: 300
   _knockBackPower: 1
+  _itemDropRate: 50
 --- !u!114 &7691119732520494596
 MonoBehaviour:
   m_ObjectHideFlags: 0

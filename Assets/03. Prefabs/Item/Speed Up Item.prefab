@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8907734252077667149}
   - component: {fileID: 4662697241744342683}
   - component: {fileID: 8918692222812461660}
+  - component: {fileID: 7219601593260216394}
   m_Layer: 0
   m_Name: Speed Up Item
   m_TagString: Untagged
@@ -177,6 +178,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 713ae1b933a4a7943a8799c3ddc93ac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 2
+--- !u!114 &7219601593260216394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7404725851696332271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7f38e2a5360b5541b1e8282d866b2ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 2
