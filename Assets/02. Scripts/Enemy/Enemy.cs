@@ -58,12 +58,13 @@ public class Enemy : MonoBehaviour
     }
     public void DropItem()
     {
-        if (UnityEngine.Random.Range(1, 101) > _itemDropRate)
+        if (UnityEngine.Random.Range(1, 101) >= _itemDropRate)
         {
             ItemSpawn itemSpawn = gameObject.GetComponent<ItemSpawn>();
             if (itemSpawn != null)
             {
-                Instantiate(gameObject.GetComponent<ItemSpawn>().GetRandomItem());
+                GameObject item = Instantiate(itemSpawn.GetRandomItem());
+                item.transform.position = transform.position; 
             }
         }
     }

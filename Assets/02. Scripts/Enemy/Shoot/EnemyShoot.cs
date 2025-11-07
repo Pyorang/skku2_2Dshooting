@@ -18,6 +18,7 @@ public class EnemyShoot : MonoBehaviour
 
     private void Shoot()
     {
-        Instantiate(_enemyBullet, this.transform );
+        GameObject bullet = Instantiate(_enemyBullet);
+        bullet.transform.position = gameObject.transform.position;
     }
 }
