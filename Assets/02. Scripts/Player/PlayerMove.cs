@@ -3,9 +3,7 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     [Header("능력치")]
-    public int Speed = 1;
-    public int MaxSpeed = 10;
-    public int MinSpeed = 1;
+    [SerializeField] private int _speed = 1;
     public float SpeedMultiplier = 1.2f;
 
     private bool _boostOn = false;
@@ -20,7 +18,7 @@ public class PlayerMove : MonoBehaviour
         HandleInput();
 
         Vector2 direction = new Vector2(_horiziontalInput, _verticalInput).normalized;
-        Vector2 displacement = _boostOn ? direction * SpeedMultiplier * Speed : direction * Speed;
+        Vector2 displacement = _boostOn ? direction * SpeedMultiplier * _speed : direction * _speed;
 
         Vector2 newPosition = (Vector2)transform.position + displacement * Time.deltaTime;
 
@@ -29,24 +27,6 @@ public class PlayerMove : MonoBehaviour
 
     public void SpeedControl()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            Speed++;
-            if (Speed >= MaxSpeed)
-            {
-                Speed = MaxSpeed;
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Speed--;
-            if (Speed < MinSpeed)
-            {
-                Speed = MinSpeed;
-            }
-        }
-
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             _boostOn = true;
@@ -106,5 +86,10 @@ public class PlayerMove : MonoBehaviour
         }
 
         return newPosition;
+    }
+
+    public void SpeedUp(int value)
+    {
+        _speed += value;
     }
 }
