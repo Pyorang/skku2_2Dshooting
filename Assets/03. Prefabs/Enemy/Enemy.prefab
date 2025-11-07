@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -894533571279349233}
   - component: {fileID: 3880628583417308066}
   - component: {fileID: 6283736382981097271}
+  - component: {fileID: 2443198566524385254}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -182,3 +183,20 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
+--- !u!114 &2443198566524385254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6244750318865009251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6431b6e1bed1c4546a42227e8c153174, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemPrefabs:
+  - {fileID: 7404725851696332271, guid: 8681df92a1b49bc4dbc2e712eeca37f4, type: 3}
+  - {fileID: 5547180440764348431, guid: 48c0b900031d6e246b86e4bef5a70e80, type: 3}
+  - {fileID: 7572252947094923499, guid: 6f9735069843248468aa8ce505de690f, type: 3}
+  _itemSpawnRatios: 46000000140000000a000000

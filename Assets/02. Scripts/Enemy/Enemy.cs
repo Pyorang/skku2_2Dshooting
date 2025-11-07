@@ -11,12 +11,16 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float _health = 100f;
     [SerializeField] private float _knockBackPower = 1;
 
+    [Header("아이템 드랍 비율")]
+    [SerializeField] private int _itemDropRate = 50;
+
     public void Hit(float damage)
     {
         _health -= damage;
 
         if(_health <= 0 )
         {
+            DropItem();
             Destroy(gameObject);
         }
     }
@@ -50,6 +54,17 @@ public class Enemy : MonoBehaviour
             }
 
             Destroy(gameObject);
+        }
+    }
+    public void DropItem()
+    {
+        if (UnityEngine.Random.Range(1, 101) > _itemDropRate)
+        {
+            ItemSpawn itemSpawn = gameObject.GetComponent<ItemSpawn>();
+            if (itemSpawn != null)
+            {
+                Instantiate(gameObject.GetComponent<ItemSpawn>().GetRandomItem());
+            }
         }
     }
 }

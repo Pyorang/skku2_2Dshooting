@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5641613886528937882}
   - component: {fileID: 571825803642825043}
   - component: {fileID: 3328122576803295279}
+  - component: {fileID: -5606784014463247792}
   m_Layer: 0
   m_Name: TeleportEnemy
   m_TagString: Enemy
@@ -221,3 +222,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyBullet: {fileID: 3481400865449114383, guid: 8904d6fe0509be44ea24ea8943fb5c5e, type: 3}
   _reloadingTime: 1
+--- !u!114 &-5606784014463247792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3428478421475955654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6431b6e1bed1c4546a42227e8c153174, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemPrefabs:
+  - {fileID: 7404725851696332271, guid: 8681df92a1b49bc4dbc2e712eeca37f4, type: 3}
+  - {fileID: 5547180440764348431, guid: 48c0b900031d6e246b86e4bef5a70e80, type: 3}
+  - {fileID: 7572252947094923499, guid: 6f9735069843248468aa8ce505de690f, type: 3}
+  _itemSpawnRatios: 46000000140000000a000000
