@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 75614fad44219a14b9c4ae56c12b099e
+guid: bec2f8b5c68ce284da57c1ab5f1ee4d9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -9183491764466701727
-    second: "IShowSpeed\uFF0D4\uFF0D560x315_0"
+      213: -4896853152620307102
+    second: 101645_52795_2410_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 315
+  spritePixelsToUnits: 400
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "IShowSpeed\uFF0D4\uFF0D560x315_0"
+      name: 101645_52795_2410_0
       rect:
         serializedVersion: 2
-        x: 125
+        x: 120
         y: 0
-        width: 315
-        height: 315
+        width: 400
+        height: 400
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 16aac3d75eead8080800000000000000
-      internalID: -9183491764466701727
+      spriteID: 26d90d89002ea0cb0800000000000000
+      internalID: -4896853152620307102
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 4cfa81d4e8f61224da43c1852df7036b
+    spriteID: 40ecba92c21d49f418753ef00c9c216d
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "IShowSpeed\uFF0D4\uFF0D560x315_0": -9183491764466701727
+      101645_52795_2410_0: -4896853152620307102
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
