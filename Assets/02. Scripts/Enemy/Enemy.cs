@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -17,6 +18,8 @@ public class Enemy : MonoBehaviour
     public void Hit(float damage)
     {
         _health -= damage;
+
+        StartCoroutine(HitColorChanged());
 
         if(_health <= 0 )
         {
@@ -67,5 +70,13 @@ public class Enemy : MonoBehaviour
                 item.transform.position = transform.position; 
             }
         }
+    }
+
+    private IEnumerator HitColorChanged()
+    {
+        SpriteRenderer spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        spriteRenderer.color = Color.white;
     }
 }
