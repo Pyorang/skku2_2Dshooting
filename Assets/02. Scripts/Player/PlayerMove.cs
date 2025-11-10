@@ -20,6 +20,13 @@ public class PlayerMove : MonoBehaviour
 
     private const float OriginSnapThresholdSq = 0.001f;
 
+    private Animator _animator;
+
+    public void Start()
+    {
+        _animator = GetComponent<Animator>();
+    }
+
     private void Update()
     {
         AutoPilotControl();
@@ -32,6 +39,14 @@ public class PlayerMove : MonoBehaviour
             Vector2 displacement = _boostOn ? direction * SpeedMultiplier * _speed : direction * _speed;
 
             Vector2 newPosition = (Vector2)transform.position + displacement * Time.deltaTime;
+
+            _animator.SetBool("isLeft", false);
+            _animator.SetBool("isRight", false);
+            if (newPosition.x < transform.position.x)
+                _animator.SetBool("isLeft", true);
+            if (newPosition.x > transform.position.x)
+                _animator.SetBool("isRight", true);
+
             transform.position = CheckBoundary(newPosition);
         }
 
@@ -45,6 +60,14 @@ public class PlayerMove : MonoBehaviour
             }
 
             Vector2 newPosition = (Vector2) transform.position + _nextMove * Time.deltaTime;
+
+            _animator.SetBool("isLeft", false);
+            _animator.SetBool("isRight", false);
+            if (newPosition.x < transform.position.x)
+                _animator.SetBool("isLeft", true);
+            if (newPosition.x > transform.position.x)
+                _animator.SetBool("isRight", true);
+
             transform.position = CheckBoundary(newPosition);
         }
     }

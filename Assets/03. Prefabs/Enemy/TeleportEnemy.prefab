@@ -240,7 +240,7 @@ MonoBehaviour:
   - {fileID: 7404725851696332271, guid: 8681df92a1b49bc4dbc2e712eeca37f4, type: 3}
   - {fileID: 5547180440764348431, guid: 48c0b900031d6e246b86e4bef5a70e80, type: 3}
   - {fileID: 7572252947094923499, guid: 6f9735069843248468aa8ce505de690f, type: 3}
-  _itemSpawnRatios: 46000000140000000a000000
+  _itemSpawnRatios: 140000002800000028000000
 --- !u!114 &-813940114208540277
 MonoBehaviour:
   m_ObjectHideFlags: 0
