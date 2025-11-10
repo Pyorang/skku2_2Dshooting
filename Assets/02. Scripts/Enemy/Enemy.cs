@@ -15,6 +15,9 @@ public class Enemy : MonoBehaviour
     [Header("아이템 드랍 비율")]
     [SerializeField] private int _itemDropRate = 50;
 
+    private static readonly Color _hitColor = new Color(255, 0, 0, 255);
+    private static readonly WaitForSeconds _changeColorTime = new WaitForSeconds(0.1f);
+
     public void Hit(float damage)
     {
         _health -= damage;
@@ -75,8 +78,8 @@ public class Enemy : MonoBehaviour
     private IEnumerator HitColorChanged()
     {
         SpriteRenderer spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        spriteRenderer.color = Color.red;
-        yield return new WaitForSeconds(0.1f);
+        spriteRenderer.color = _hitColor;
+        yield return _changeColorTime;
         spriteRenderer.color = Color.white;
     }
 }
