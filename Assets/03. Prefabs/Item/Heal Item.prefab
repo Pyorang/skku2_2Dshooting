@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1758432861586429933}
   - component: {fileID: 6097632821100611925}
   - component: {fileID: 1141544077063832930}
+  - component: {fileID: 1253405077282416068}
   m_Layer: 0
   m_Name: Heal Item
   m_TagString: Untagged
@@ -82,7 +83,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -4896853152620307102, guid: bec2f8b5c68ce284da57c1ab5f1ee4d9, type: 3}
+  m_Sprite: {fileID: 8033092973025764044, guid: 606e3127513c6c74d852755e18a67337, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -208,3 +209,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsFriendly: 1
+--- !u!95 &1253405077282416068
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5547180440764348431}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5278098b7eeb8364787952f747d0d372, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
