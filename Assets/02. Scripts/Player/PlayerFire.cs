@@ -24,6 +24,9 @@ public class PlayerFire : MonoBehaviour
     public float ReloadingTime = 0.6f;
     private float _currentReloadingTime = 0f;
 
+    [Header("폭탄")]
+    [SerializeField] private KeyCode _bombKey = KeyCode.Alpha3;
+
     private bool _isAutoFire = true;
 
     private void Update()
@@ -54,7 +57,7 @@ public class PlayerFire : MonoBehaviour
 
     private void ProcessBombInput()
     {
-        if(Input.GetKeyDown(KeyCode.Alpha3))
+        if(Input.GetKeyDown(_bombKey))
         {
             Instantiate(_bombPrefab, _bombFirePosition.position, Quaternion.identity);
         }
