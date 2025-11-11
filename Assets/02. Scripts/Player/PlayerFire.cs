@@ -8,10 +8,12 @@ public class PlayerFire : MonoBehaviour
     [Header("총알 프리팹")]  // 복사해올 총알 프리팹 게임 오브젝트
     public GameObject BulletPrefab;
     public GameObject AssistBulletPrefab;
+    [SerializeField] private GameObject _bombPrefab;
 
     [Header("총구")]
     public Transform LeftFirePosition;
     public Transform RightFirePosition;
+    [SerializeField] private Transform _bombFirePosition;
 
     [Header("보조 총구")]
     public Transform AssistLeftFirePosition;
@@ -22,10 +24,14 @@ public class PlayerFire : MonoBehaviour
     public float ReloadingTime = 0.6f;
     private float _currentReloadingTime = 0f;
 
+    [Header("폭탄")]
+    [SerializeField] private KeyCode _bombKey = KeyCode.Alpha3;
+
     private bool _isAutoFire = true;
 
     private void Update()
     {
+        ProcessBombInput();
         ChangeAutoMode();
 
         if(!_isReloading)
@@ -46,6 +52,14 @@ public class PlayerFire : MonoBehaviour
         if(_isReloading)
         {
             Reload();
+        }
+    }
+
+    private void ProcessBombInput()
+    {
+        if(Input.GetKeyDown(_bombKey))
+        {
+            Instantiate(_bombPrefab, _bombFirePosition.position, Quaternion.identity);
         }
     }
 

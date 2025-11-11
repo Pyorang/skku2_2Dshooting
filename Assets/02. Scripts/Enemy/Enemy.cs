@@ -15,8 +15,12 @@ public class Enemy : MonoBehaviour
     [Header("아이템 드랍 비율")]
     [SerializeField] private int _itemDropRate = 50;
 
-    private static readonly Color _hitColor = new Color(255, 0, 0, 255);
-    private static readonly WaitForSeconds _changeColorTime = new WaitForSeconds(0.1f);
+
+    [Header("폭발 효과 프리팹")]
+    [SerializeField] private GameObject _explosionPrefab;
+
+    private static readonly Color s_hitColor = new Color(255, 0, 0, 255);
+    private static readonly WaitForSeconds s_changeColorTime = new WaitForSeconds(0.1f);
 
     public void Hit(float damage)
     {
@@ -27,8 +31,19 @@ public class Enemy : MonoBehaviour
         if(_health <= 0 )
         {
             DropItem();
+            MakeExplosionEffect();
             Destroy(gameObject);
         }
+    }
+
+    public void ProcessInstantDeath()
+    {
+        Hit(_health);
+    }
+
+    private void MakeExplosionEffect()
+    {
+        Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
     }
 
     public void KnockBack()
@@ -78,8 +93,8 @@ public class Enemy : MonoBehaviour
     private IEnumerator HitColorChanged()
     {
         SpriteRenderer spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        spriteRenderer.color = _hitColor;
-        yield return _changeColorTime;
+        spriteRenderer.color = s_hitColor;
+        yield return s_changeColorTime;
         spriteRenderer.color = Color.white;
     }
 }

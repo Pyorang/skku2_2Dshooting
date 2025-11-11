@@ -349,6 +349,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scrollSpeed: 0.3
+--- !u!1 &323254144
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 323254145}
+  m_Layer: 0
+  m_Name: BombFirePosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &323254145
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 323254144}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 583809836}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &550166658
 GameObject:
   m_ObjectHideFlags: 0
@@ -473,6 +504,7 @@ Transform:
   m_Children:
   - {fileID: 1591183846}
   - {fileID: 2085530450}
+  - {fileID: 323254145}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &583809837
@@ -505,8 +537,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BulletPrefab: {fileID: 621144330162021675, guid: 348f4d82acf1e2340a9f5e467398be0f, type: 3}
   AssistBulletPrefab: {fileID: 3461895040703094760, guid: 04adb209e62252e4eb1851323d80df01, type: 3}
+  _bombPrefab: {fileID: 1248647582656846940, guid: 8e1a285547edd644892f00237b3731fd, type: 3}
   LeftFirePosition: {fileID: 1205850950}
   RightFirePosition: {fileID: 1472898382}
+  _bombFirePosition: {fileID: 323254145}
   AssistLeftFirePosition: {fileID: 550166659}
   AssistRightFirePosition: {fileID: 1946757636}
   _isReloading: 0
