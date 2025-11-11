@@ -3,7 +3,7 @@ using UnityEngine;
 public class ChasePlayer : MovementComponent
 {
     private Transform _playerTransform;
-    private static readonly float _rotateOffset = 90f;
+    private static readonly float s_rotateOffset = 90f;
 
     private void Start()
     {
@@ -28,8 +28,8 @@ public class ChasePlayer : MovementComponent
     private void LookAtPlayer(Vector3 direction)
     {
         float radian = Mathf.Atan2(direction.y, direction.x);
-        float degree = radian * 180 /Mathf.PI;
+        float degree = radian * Mathf.Rad2Deg;
 
-        transform.rotation = Quaternion.Euler(0, 0, degree + _rotateOffset);
+        transform.rotation = Quaternion.Euler(0, 0, degree + s_rotateOffset);
     }
 }
