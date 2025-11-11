@@ -182,6 +182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38bcaa3dc7f37b14d9d78308dd71476d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gainEffect: {fileID: 8771972552311404799, guid: bbf9e36a48d6c5648a13889afab076fd, type: 3}
   _healAmount: 1
 --- !u!114 &6097632821100611925
 MonoBehaviour:
