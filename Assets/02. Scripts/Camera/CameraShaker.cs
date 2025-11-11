@@ -1,9 +1,9 @@
-using System;
 using UnityEngine;
 
 public class CameraShaker : MonoBehaviour
 {
     private Camera _camera;
+    public static CameraShaker s_instance;
     private bool _isShaking = false;
     private Vector3 _startPosition;
     private Vector3 _shakeVector;
@@ -15,9 +15,17 @@ public class CameraShaker : MonoBehaviour
 
     private void Start()
     {
+        if(s_instance == null)
+        {
+            s_instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
         _camera = Camera.main;
         _startPosition = _camera.transform.position;
-        Enemy.OnDie += StartShake;
     }
 
     private void Update()
@@ -30,7 +38,7 @@ public class CameraShaker : MonoBehaviour
                 StopShake();
                 return;
             }
-            _shakeVector = _startPosition + Vector3.right * _vibrateMultiplier * UnityEngine.Random.Range(-1f, 1f);
+            _shakeVector = new Vector3(_vibrateMultiplier * Random.Range(0, 1f), _camera.transform.position.y, _camera.transform.position.z);
             _camera.transform.position = _shakeVector;
         }
     }
@@ -47,7 +55,7 @@ public class CameraShaker : MonoBehaviour
 
     public void StopShake()
     {
-        _isShaking = false;
+        _isShaking=false;
         _camera.transform.position = _startPosition;
         _currentDuration = 0;
     }

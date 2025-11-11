@@ -21,7 +21,6 @@ public class Enemy : MonoBehaviour
 
     private static readonly Color s_hitColor = new Color(255, 0, 0, 255);
     private static readonly WaitForSeconds s_changeColorTime = new WaitForSeconds(0.1f);
-    public static event Action OnDie;
 
     public void Hit(float damage)
     {
@@ -33,7 +32,7 @@ public class Enemy : MonoBehaviour
         {
             DropItem();
             MakeExplosionEffect();
-            OnDie?.Invoke();
+            CameraShaker.s_instance.StartShake();
             Destroy(gameObject);
         }
     }
