@@ -36,6 +36,11 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public void ProcessInstantDeath()
+    {
+        Hit(_health);
+    }
+
     private void MakeExplosionEffect()
     {
         Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
