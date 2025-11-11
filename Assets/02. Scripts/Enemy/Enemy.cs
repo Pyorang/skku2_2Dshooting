@@ -15,6 +15,10 @@ public class Enemy : MonoBehaviour
     [Header("아이템 드랍 비율")]
     [SerializeField] private int _itemDropRate = 50;
 
+
+    [Header("폭발 효과 프리팹")]
+    [SerializeField] private GameObject _explosionPrefab;
+
     private static readonly Color _hitColor = new Color(255, 0, 0, 255);
     private static readonly WaitForSeconds _changeColorTime = new WaitForSeconds(0.1f);
 
@@ -27,8 +31,14 @@ public class Enemy : MonoBehaviour
         if(_health <= 0 )
         {
             DropItem();
+            MakeExplosionEffect();
             Destroy(gameObject);
         }
+    }
+
+    private void MakeExplosionEffect()
+    {
+        Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
     }
 
     public void KnockBack()
