@@ -32,6 +32,7 @@ public class Enemy : MonoBehaviour
         {
             DropItem();
             MakeExplosionEffect();
+            CameraShaker.s_instance.StartShake();
             Destroy(gameObject);
         }
     }
