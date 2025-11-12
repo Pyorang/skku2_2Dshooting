@@ -10,6 +10,7 @@ public class ScoreManager : MonoBehaviour
 
     [SerializeField] private Text _currentScoreTextUI;
     [SerializeField] private Text _bestScoreTextUI;
+    [SerializeField] private float _accentDuration = 0.3f;
     private int _currentScore = 0;
     private int _bestScore = 0;
 
@@ -41,8 +42,8 @@ public class ScoreManager : MonoBehaviour
 
         _currentScoreTextUI.transform.localScale = Vector3.one;
 
-        mySequence.Append(_currentScoreTextUI.transform.DOScale(Vector3.zero, 0.3f));
-        mySequence.Append(_currentScoreTextUI.transform.DOScale(Vector3.one, 0.3f));
+        mySequence.Append(_currentScoreTextUI.transform.DOScale(Vector3.zero, _accentDuration));
+        mySequence.Append(_currentScoreTextUI.transform.DOScale(Vector3.one, _accentDuration));
     }
 
     private void Refresh()

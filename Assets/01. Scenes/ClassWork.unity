@@ -275,7 +275,7 @@ RectTransform:
   m_GameObject: {fileID: 81885163}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 654455528}
@@ -315,7 +315,7 @@ MonoBehaviour:
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 1
+    m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\uD604\uC7AC \uC810\uC218 : 100"
@@ -2132,6 +2132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currentScoreTextUI: {fileID: 81885165}
   _bestScoreTextUI: {fileID: 441801358}
+  _accentDuration: 0.3
 --- !u!4 &1620554541
 Transform:
   m_ObjectHideFlags: 0
