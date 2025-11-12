@@ -22,7 +22,7 @@ public class ScoreManager : MonoBehaviour
 
         _currentScore += score;
         
-        if(_currentScore >= _bestScore)
+        if(_currentScore > _bestScore)
         {
             _bestScore = _currentScore;
         }
@@ -38,11 +38,6 @@ public class ScoreManager : MonoBehaviour
 
     public void Save()
     {
-        if(_currentScore > _bestScore)
-        {
-            _bestScore = _currentScore;
-        }
-
         PlayerPrefs.SetInt("bestScore", _bestScore);
         Debug.Log("저장됐습니다");
     }
