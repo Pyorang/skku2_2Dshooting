@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
 
         if(_health <= 0 )
         {
+            ScoreManager scoreManager = FindAnyObjectByType<ScoreManager>();
+            scoreManager.Save();
             Destroy(gameObject);
         }
     }
