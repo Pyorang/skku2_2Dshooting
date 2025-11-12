@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class ScoreManager : MonoBehaviour
 
     [SerializeField] private Text _currentScoreTextUI;
     [SerializeField] private Text _bestScoreTextUI;
+    [SerializeField] private float _accentDuration = 0.3f;
+    [SerializeField] private float _accentStrength = 2.0f;
     private int _currentScore = 0;
     private int _bestScore = 0;
 
@@ -30,6 +33,17 @@ public class ScoreManager : MonoBehaviour
         Refresh();
     }
 
+    private void AccentScoreText()
+    {
+        _currentScoreTextUI.transform.DOKill();
+
+        Sequence mySequence = DOTween.Sequence();
+
+        _currentScoreTextUI.transform.localScale = Vector3.one;
+
+        mySequence.Append(_currentScoreTextUI.transform.DOScale(Vector3.one * _accentStrength, _accentDuration));
+        mySequence.Append(_currentScoreTextUI.transform.DOScale(Vector3.one, _accentDuration));
+    }
     private void Refresh()
     {
         _currentScoreTextUI.text = $"현재 점수 : {_currentScore:N0}";
@@ -38,13 +52,36 @@ public class ScoreManager : MonoBehaviour
 
     public void Save()
     {
-        PlayerPrefs.SetInt("bestScore", _bestScore);
-        Debug.Log("저장됐습니다");
+        UserData data = new UserData
+        {
+            BestScore = _bestScore
+        };
+
+        string json = JsonUtility.ToJson(data, true);
+        PlayerPrefs.SetString("UserData", json);
     }
 
     private void Load()
     {
-        _bestScore = PlayerPrefs.GetInt("bestScore", 0);
+        if (PlayerPrefs.HasKey("UserData"))
+        {
+            string json = PlayerPrefs.GetString("UserData");
+            UserData data = JsonUtility.FromJson<UserData>(json);
+
+            if (data != null)
+            {
+                _bestScore = data.BestScore;
+            }
+            else
+            {
+                _bestScore = 0;
+            }
+        }
+        else
+        {
+            _bestScore = 0;
+        }
+
         Refresh();
     }
 }
