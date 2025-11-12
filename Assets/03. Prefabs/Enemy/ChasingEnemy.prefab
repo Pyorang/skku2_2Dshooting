@@ -110,6 +110,7 @@ MonoBehaviour:
   _knockBackPower: 1
   _itemDropRate: 50
   _explosionPrefab: {fileID: 2433282508537954060, guid: 3ef3ae421f71c5c4e97fe12dc2fc6312, type: 3}
+  _monsterPoint: 200
 --- !u!114 &5912063818257209185
 MonoBehaviour:
   m_ObjectHideFlags: 0

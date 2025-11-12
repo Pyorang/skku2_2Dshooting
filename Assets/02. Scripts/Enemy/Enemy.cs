@@ -19,6 +19,9 @@ public class Enemy : MonoBehaviour
     [Header("폭발 효과 프리팹")]
     [SerializeField] private GameObject _explosionPrefab;
 
+    [Header("몬스터 점수")]
+    [SerializeField] private int _monsterPoint = 100;
+
     private static readonly Color s_hitColor = new Color(255, 0, 0, 255);
     private static readonly WaitForSeconds s_changeColorTime = new WaitForSeconds(0.1f);
 
@@ -32,6 +35,10 @@ public class Enemy : MonoBehaviour
         {
             DropItem();
             MakeExplosionEffect();
+            
+            ScoreManager scoreManager = FindAnyObjectByType<ScoreManager>();
+            scoreManager.AddScore(_monsterPoint);
+
             CameraShaker.s_instance.StartShake();
             Destroy(gameObject);
         }
