@@ -1,40 +1,52 @@
-using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PetController : MonoBehaviour
 {
-    private static readonly float _timeDifference = 0.3f;
+    private static readonly float _startDelay = 0.3f;
     private float _timeElapsed = 0;
 
     [Header("펫 오브젝트")]
-    [SerializeField] private GameObject _pet;
+    [SerializeField] private Transform _petTransform;
 
     private Queue<Vector3> _locationList = new Queue<Vector3>();
     private Vector3 _prevPosition;
-    private int deltaFrame = 0;
+    private int _deltaFrame = 0;
 
     private void Update()
     {
-        if(_prevPosition != transform.position)
+        SaveLocation();
+        WaitForStartDelay();
+        ChangePetPosition();
+    }
+
+    private void SaveLocation()
+    {
+        if (_prevPosition != transform.position)
         {
             _locationList.Enqueue(transform.position);
             _prevPosition = transform.position;
         }
+    }
 
+    private void WaitForStartDelay()
+    {
         _timeElapsed += Time.deltaTime;
 
-        if (_timeElapsed < _timeDifference)
+        if (_timeElapsed < _startDelay)
         {
-            deltaFrame++;
+            _deltaFrame++;
             return;
         }
+    }
 
-        if(_pet != null)
+    private void ChangePetPosition()
+    {
+        if (_petTransform != null)
         {
-            if(deltaFrame < _locationList.Count)
+            if (_deltaFrame < _locationList.Count)
             {
-                _pet.transform.position = _locationList.Dequeue();
+                _petTransform.transform.position = _locationList.Dequeue();
             }
         }
     }
