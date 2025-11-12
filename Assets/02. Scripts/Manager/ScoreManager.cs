@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -21,13 +22,27 @@ public class ScoreManager : MonoBehaviour
         if (score <= 0) return;
 
         _currentScore += score;
-        
-        if(_currentScore > _bestScore)
+        AccentScoreText();
+
+
+        if (_currentScore > _bestScore)
         {
             _bestScore = _currentScore;
         }
 
         Refresh();
+    }
+
+    private void AccentScoreText()
+    {
+        _currentScoreTextUI.transform.DOKill();
+
+        Sequence mySequence = DOTween.Sequence();
+
+        _currentScoreTextUI.transform.localScale = Vector3.one;
+
+        mySequence.Append(_currentScoreTextUI.transform.DOScale(Vector3.zero, 0.3f));
+        mySequence.Append(_currentScoreTextUI.transform.DOScale(Vector3.one, 0.3f));
     }
 
     private void Refresh()
