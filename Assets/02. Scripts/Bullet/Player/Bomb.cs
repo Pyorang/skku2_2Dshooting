@@ -7,9 +7,6 @@ public class Bomb : MonoBehaviour
     [Header("폭탄 생존 시간")]
     [SerializeField] private float _destroyTime = 3f;
 
-    [Header("이동")]
-    [SerializeField] private float _bombSpeed = 5f;
-
     private void Update()
     {
         _currentExistTime += Time.deltaTime;
@@ -18,8 +15,6 @@ public class Bomb : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        transform.position += Vector3.up * _bombSpeed * Time.deltaTime;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
