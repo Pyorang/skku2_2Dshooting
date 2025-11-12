@@ -10,6 +10,7 @@ public abstract class Item : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             ProcessItemEffect(collision);
+            collision.GetComponent<Player>().PlayItemGain();
             Instantiate(_gainEffect, collision.transform);
             Destroy(gameObject);
         }

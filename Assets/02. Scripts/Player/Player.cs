@@ -2,7 +2,14 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-   [SerializeField] private float _health = 3;
+    [SerializeField] private float _health = 3;
+    [SerializeField] private AudioSource _itemGainSFX;
+    [SerializeField] private AudioSource _deathSFX;
+
+    public void PlayItemGain()
+    {
+        _itemGainSFX.Play();
+    }
 
     public void Hit(float damage)
     {
@@ -10,6 +17,7 @@ public class Player : MonoBehaviour
 
         if(_health <= 0 )
         {
+            _deathSFX.Play();
             ScoreManager scoreManager = FindAnyObjectByType<ScoreManager>();
             scoreManager.Save();
             Destroy(gameObject);
