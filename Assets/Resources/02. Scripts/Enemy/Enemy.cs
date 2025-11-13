@@ -40,7 +40,7 @@ public class Enemy : MonoBehaviour
             ScoreManager.Instance.AddScore(_monsterPoint);
 
             CameraShaker.Instance.StartShake();
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 

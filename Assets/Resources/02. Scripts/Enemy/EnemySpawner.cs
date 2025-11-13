@@ -1,5 +1,12 @@
 using UnityEngine;
 
+public enum EnemyType
+{
+    Enemy,
+    ChasingEnemy,
+    TeleportEnemy
+}
+
 public class EnemySpawner : MonoBehaviour
 {
     [Header("스폰 쿨타임")]
@@ -24,25 +31,41 @@ public class EnemySpawner : MonoBehaviour
         if(_currentSpawnCoolTime <= 0)
         {
             _currentSpawnCoolTime = Random.Range(_minSpawnCoolTime, _maxSpawnCoolTime);
-            GameObject spawnedEnemy = Instantiate(SelectRandomEnemy());
-            spawnedEnemy.transform.position = transform.position;
+            
+            EnemyType enemyType = SelectRandomEnemy();
+            
+            switch(enemyType)
+            {
+                case EnemyType.ChasingEnemy:
+                    EnemyFactory.Instance.MakeChasingEnemy(transform.position);
+                    break;
+                case EnemyType.TeleportEnemy:
+                    EnemyFactory.Instance.MakeTeleportEnemy(transform.position);
+                    break;
+                default:
+                    EnemyFactory.Instance.MakeEnemy(transform.position);
+                    break;
+            }
         }
     }
 
-    private GameObject SelectRandomEnemy()
+    private EnemyType SelectRandomEnemy()
     {
         int randomNumber = Random.Range(1, 101);
+        int enemyType = 0;
 
         for(int i = 0; i < _enemyPrefabs.Length; i++)
         {
             randomNumber -= EnemySpawnRate[i];
-            
+
             if(randomNumber <= 0)
             {
-                return _enemyPrefabs[i];
+                break;
             }
+
+            enemyType++;
         }
 
-        return _enemyPrefabs[0];
+        return (EnemyType)enemyType;
     }
 }
