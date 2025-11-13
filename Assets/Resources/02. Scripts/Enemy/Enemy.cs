@@ -35,11 +35,12 @@ public class Enemy : MonoBehaviour
         {
             DropItem();
             MakeExplosionEffect();
+            AudioManager.Instance.PlaySound("Explosion", AudioType.SFX);
             
             ScoreManager scoreManager = FindAnyObjectByType<ScoreManager>();
             scoreManager.AddScore(_monsterPoint);
 
-            CameraShaker.s_instance.StartShake();
+            CameraShaker.Instance.StartShake();
             Destroy(gameObject);
         }
     }

@@ -27,9 +27,6 @@ public class PlayerFire : MonoBehaviour
     [Header("폭탄")]
     [SerializeField] private KeyCode _bombKey = KeyCode.Alpha3;
 
-    [Header("사운드")]
-    public AudioSource FireSound;
-
     private bool _isAutoFire = true;
 
     private void Update()
@@ -88,7 +85,7 @@ public class PlayerFire : MonoBehaviour
         rightBullet.transform.position = RightFirePosition.position;
 
         AssistFire();
-        FireSound.Play();
+        AudioManager.Instance.PlaySound("Fire", AudioType.SFX);
         _isReloading = true;
     }
 
