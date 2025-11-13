@@ -36,9 +36,8 @@ public class Enemy : MonoBehaviour
             DropItem();
             MakeExplosionEffect();
             AudioManager.Instance.PlaySound("Explosion", AudioType.SFX);
-            
-            ScoreManager scoreManager = FindAnyObjectByType<ScoreManager>();
-            scoreManager.AddScore(_monsterPoint);
+
+            ScoreManager.Instance.AddScore(_monsterPoint);
 
             CameraShaker.Instance.StartShake();
             Destroy(gameObject);

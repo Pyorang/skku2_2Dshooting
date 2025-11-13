@@ -16,8 +16,7 @@ public class Player : MonoBehaviour
         if(_health <= 0 )
         {
             AudioManager.Instance.PlaySound("Explosion", AudioType.SFX);
-            ScoreManager scoreManager = FindAnyObjectByType<ScoreManager>();
-            scoreManager.Save();
+            ScoreManager.Instance.Save();
             Destroy(gameObject);
         }
     }
