@@ -1,12 +1,12 @@
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
-using DG.Tweening;
+using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class ScoreManager : MonoBehaviour
 {
-    // 응집도를 높혀라
-    // 응집도 : '데이터'와 '데이터를 조작하는 로직'이 얼마나 잘 모여있냐
-    // 응집도를 높이고, 필요한 것만 외부에 공개하는 것을 캡슐화라고 한다.
+    private static ScoreManager s_Instance;
+    public static ScoreManager Instance => s_Instance;
 
     [SerializeField] private Text _currentScoreTextUI;
     [SerializeField] private Text _bestScoreTextUI;
@@ -14,6 +14,18 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private float _accentStrength = 2.0f;
     private int _currentScore = 0;
     private int _bestScore = 0;
+
+    private void Awake()
+    {
+        if (s_Instance == null)
+        {
+            s_Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private void Start()
     {
