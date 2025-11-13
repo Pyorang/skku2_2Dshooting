@@ -35,6 +35,7 @@ public class Enemy : MonoBehaviour
         {
             DropItem();
             MakeExplosionEffect();
+            AudioManager.s_Instance.PlaySound("Explosion", AudioType.SFX);
             
             ScoreManager scoreManager = FindAnyObjectByType<ScoreManager>();
             scoreManager.AddScore(_monsterPoint);

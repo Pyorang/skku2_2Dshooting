@@ -3,12 +3,10 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private float _health = 3;
-    [SerializeField] private AudioSource _itemGainSFX;
-    [SerializeField] private AudioSource _deathSFX;
 
     public void PlayItemGain()
     {
-        _itemGainSFX.Play();
+        AudioManager.s_Instance.PlaySound("Item", AudioType.SFX);
     }
 
     public void Hit(float damage)
@@ -17,7 +15,7 @@ public class Player : MonoBehaviour
 
         if(_health <= 0 )
         {
-            _deathSFX.Play();
+            AudioManager.s_Instance.PlaySound("Explosion", AudioType.SFX);
             ScoreManager scoreManager = FindAnyObjectByType<ScoreManager>();
             scoreManager.Save();
             Destroy(gameObject);
