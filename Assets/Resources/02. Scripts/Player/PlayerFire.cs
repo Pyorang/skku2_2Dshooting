@@ -5,9 +5,7 @@ public class PlayerFire : MonoBehaviour
     // 목표 : 스페이스바를 누르면 총알을 만들어서 발사하고 싶다.
 
     // 필요 속성
-    [Header("총알 프리팹")]  // 복사해올 총알 프리팹 게임 오브젝트
-    public GameObject BulletPrefab;
-    public GameObject AssistBulletPrefab;
+    
     [SerializeField] private GameObject _bombPrefab;
 
     [Header("총구")]
@@ -78,12 +76,7 @@ public class PlayerFire : MonoBehaviour
 
     public void Fire()
     {
-        GameObject leftBullet = Instantiate(BulletPrefab);
-        GameObject rightBullet = Instantiate(BulletPrefab);
-
-        leftBullet.transform.position = LeftFirePosition.position;
-        rightBullet.transform.position = RightFirePosition.position;
-
+        MakeBullets();
         AssistFire();
         AudioManager.Instance.PlaySound("Fire", AudioType.SFX);
         _isReloading = true;
@@ -93,11 +86,7 @@ public class PlayerFire : MonoBehaviour
     {
         if (!_isReloading)
         {
-            GameObject leftAssistBullet = Instantiate(AssistBulletPrefab);
-            GameObject rightAssistBullet = Instantiate(AssistBulletPrefab);
-
-            leftAssistBullet.transform.position = AssistLeftFirePosition.position;
-            rightAssistBullet.transform.position = AssistRightFirePosition.position;
+            MakeSubBullets();
         }
     }
 
@@ -114,6 +103,18 @@ public class PlayerFire : MonoBehaviour
     public void IncreaseFiringRate(float ratio)
     {
         ReloadingTime *= (1 - ratio);
+    }
+
+    private void MakeBullets()
+    {
+        BulletFactory.Instance.MakeBullet(LeftFirePosition.position);
+        BulletFactory.Instance.MakeBullet(RightFirePosition.position);
+    }
+
+    private void MakeSubBullets()
+    {
+        BulletFactory.Instance.MakeSubBullet(AssistLeftFirePosition.position);
+        BulletFactory.Instance.MakeSubBullet(AssistRightFirePosition.position);
     }
 }
 
