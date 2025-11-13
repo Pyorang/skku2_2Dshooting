@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
 
     public void PlayItemGain()
     {
-        AudioManager.s_Instance.PlaySound("Item", AudioType.SFX);
+        AudioManager.Instance.PlaySound("Item", AudioType.SFX);
     }
 
     public void Hit(float damage)
@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
 
         if(_health <= 0 )
         {
-            AudioManager.s_Instance.PlaySound("Explosion", AudioType.SFX);
+            AudioManager.Instance.PlaySound("Explosion", AudioType.SFX);
             ScoreManager scoreManager = FindAnyObjectByType<ScoreManager>();
             scoreManager.Save();
             Destroy(gameObject);

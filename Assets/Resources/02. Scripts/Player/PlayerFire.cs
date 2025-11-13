@@ -85,7 +85,7 @@ public class PlayerFire : MonoBehaviour
         rightBullet.transform.position = RightFirePosition.position;
 
         AssistFire();
-        AudioManager.s_Instance.PlaySound("Fire", AudioType.SFX);
+        AudioManager.Instance.PlaySound("Fire", AudioType.SFX);
         _isReloading = true;
     }
 

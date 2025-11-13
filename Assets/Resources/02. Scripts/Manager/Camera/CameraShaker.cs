@@ -3,7 +3,8 @@ using UnityEngine;
 public class CameraShaker : MonoBehaviour
 {
     private Camera _camera;
-    public static CameraShaker s_instance;
+    private static CameraShaker s_instance;
+    public static CameraShaker Instance => s_instance;
     private bool _isShaking = false;
     private Vector3 _startPosition;
     private Vector3 _shakeVector;
@@ -13,7 +14,7 @@ public class CameraShaker : MonoBehaviour
     [SerializeField] private float _shakeDuration = 0.5f;
     [SerializeField] private float _vibrateMultiplier = 1.0f;
 
-    private void Start()
+    private void Awake()
     {
         if(s_instance == null)
         {

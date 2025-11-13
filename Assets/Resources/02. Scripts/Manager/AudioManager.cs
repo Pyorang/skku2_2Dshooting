@@ -1,7 +1,5 @@
-using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 public enum AudioType
 {
     BGM,
@@ -10,11 +8,12 @@ public enum AudioType
 
 public class AudioManager : MonoBehaviour
 {
-    public static AudioManager s_Instance;
+    private static AudioManager s_Instance;
+    public static AudioManager Instance => s_Instance;
     private AudioSource _bgm;
     private List<AudioSource> _sfxList = new List<AudioSource>();
 
-    private void Start()
+    private void Awake()
     {
         if (s_Instance == null)
         {
@@ -24,18 +23,20 @@ public class AudioManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        if(_bgm == null)
+        if (_bgm == null)
         {
             _bgm = gameObject.AddComponent<AudioSource>();
             _bgm.loop = true;
         }
 
-        if(_sfxList.Count == 0)
+        if (_sfxList.Count == 0)
         {
             _sfxList.Add(gameObject.AddComponent<AudioSource>());
         }
+    }
 
+    private void Start()
+    {
         PlaySound("BGM", AudioType.BGM);
     }
 

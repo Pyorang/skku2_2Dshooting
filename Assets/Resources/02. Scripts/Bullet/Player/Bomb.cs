@@ -9,7 +9,7 @@ public class Bomb : MonoBehaviour
 
     private void Start()
     {
-        AudioManager.s_Instance.PlaySound("Ability", AudioType.SFX);
+        AudioManager.Instance.PlaySound("Ability", AudioType.SFX);
     }
 
     private void Update()
