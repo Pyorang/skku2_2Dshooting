@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     [Header("스탯")]
     [SerializeField] private float _health = 100f;
     [SerializeField] private float _knockBackPower = 1;
+    private float _startHealth;
 
     [Header("아이템 드랍 비율")]
     [SerializeField] private int _itemDropRate = 50;
@@ -24,12 +25,43 @@ public class Enemy : MonoBehaviour
 
     private static readonly Color s_hitColor = new Color(255, 0, 0, 255);
     private static readonly WaitForSeconds s_changeColorTime = new WaitForSeconds(0.1f);
+    private SpriteRenderer _spriteRenderer;
+    private Sprite _firstSprite;
+
+    private void Awake()
+    {
+        _startHealth = _health;
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _firstSprite = _spriteRenderer.sprite;
+    }
+
+    private void OnEnable()
+    {
+        Init();
+    }
+
+    private void OnDisable()
+    {
+        _spriteRenderer.size = Vector2.one;
+        StopAllCoroutines();
+    }
+
+    private void Init()
+    {
+        _spriteRenderer.sprite = _firstSprite;
+        _spriteRenderer.color = Color.white;
+        _spriteRenderer.size = Vector2.one;
+        _health = _startHealth;
+    }
 
     public void Hit(float damage)
     {
         _health -= damage;
 
-        StartCoroutine(HitColorChanged());
+        if(gameObject.activeSelf)
+        {
+            StartCoroutine(HitColorChanged());
+        }
 
         if(_health <= 0 )
         {
@@ -82,7 +114,7 @@ public class Enemy : MonoBehaviour
                 playerStat.Hit(1);
             }
 
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
     public void DropItem()
@@ -100,9 +132,8 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator HitColorChanged()
     {
-        SpriteRenderer spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        spriteRenderer.color = s_hitColor;
+        _spriteRenderer.color = s_hitColor;
         yield return s_changeColorTime;
-        spriteRenderer.color = Color.white;
+        _spriteRenderer.color = Color.white;
     }
 }

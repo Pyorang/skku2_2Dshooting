@@ -10,9 +10,27 @@ public class TeleportMove : MovementComponent
 
     private Animator _animator;
 
-    private void Start()
+    private void Awake()
     {
         _animator = GetComponent<Animator>();
+    }
+
+    private void OnEnable()
+    {
+        Init();
+    }
+
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+    }
+
+    private void Init()
+    {
+        _isMoving = true;
+        _timeElapsed = 0;
+
+        _animator.Play("Idle", 0, 0f);
     }
 
     protected override void Move()
