@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -8020003410801186195}
   m_Layer: 0
   m_Name: Bullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -103,7 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 60
   CriticalHit: 50
-  StartSpeed: 0
+  StartSpeed: 7
   MaxSpeed: 7
   ZeroToMaxSpeedTime: 0.1
 --- !u!60 &-8020003410801186195
