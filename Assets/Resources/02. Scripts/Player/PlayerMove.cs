@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
+    [Header("조이스틱")]
+    [SerializeField] private Joystick _joyStick;
+
     [Header("능력치")]
     [SerializeField] private int _speed = 1;
     [SerializeField] private float _approachAlertDist = 5;
@@ -35,7 +38,7 @@ public class PlayerMove : MonoBehaviour
         {
             HandleInput();
 
-            Vector2 direction = new Vector2(_horiziontalInput, _verticalInput).normalized;
+            Vector2 direction = new Vector2(_joyStick.Horizontal, _joyStick.Vertical).normalized;
             Vector2 displacement = _boostOn ? direction * SpeedMultiplier * _speed : direction * _speed;
 
             Vector2 newPosition = (Vector2)transform.position + displacement * Time.deltaTime;
