@@ -32,22 +32,19 @@ public class PlayerFire : MonoBehaviour
         ProcessBombInput();
         ChangeAutoMode();
 
-        if(!_isReloading)
+        if (_isAutoFire)
         {
-            if (_isAutoFire)
+            Fire();
+        }
+        else
+        {
+            if (Input.GetKey(KeyCode.Space))
             {
                 Fire();
             }
-            else
-            {
-                if (Input.GetKey(KeyCode.Space))
-                {
-                    Fire();
-                }
-            }
         }
 
-        if(_isReloading)
+        if (_isReloading)
         {
             Reload();
         }
@@ -76,10 +73,13 @@ public class PlayerFire : MonoBehaviour
 
     public void Fire()
     {
-        MakeBullets();
-        AssistFire();
-        AudioManager.Instance.PlaySound("Fire", AudioType.SFX);
-        _isReloading = true;
+        if(!_isReloading)
+        {
+            MakeBullets();
+            AssistFire();
+            AudioManager.Instance.PlaySound("Fire", AudioType.SFX);
+            _isReloading = true;
+        }
     }
 
     public void AssistFire()
