@@ -15,6 +15,9 @@ public class ScoreManager : MonoBehaviour
     private int _currentScore = 0;
     private int _bestScore = 0;
 
+    [Header("보스 소환")]
+    [SerializeField] private int _bossSpawnScore = 3000;
+
     private void Awake()
     {
         if (s_Instance == null)
@@ -37,6 +40,11 @@ public class ScoreManager : MonoBehaviour
 
         _currentScore += score;
         
+        if(_currentScore >= _bossSpawnScore)
+        {
+            BossSpawner.Instance.SpawnBoss();
+        }
+
         if(_currentScore > _bestScore)
         {
             _bestScore = _currentScore;
