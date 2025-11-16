@@ -7,12 +7,10 @@ public class DestroyZone : MonoBehaviour
     {
         if(collision.CompareTag("Bullet") || collision.CompareTag("Enemy"))
         {
-            collision.gameObject.SetActive(false);
-        }
-
-        else
-        {
-            Destroy(collision.gameObject);
+            if(collision.GetComponent<BossShoot>() == null)
+            {
+                collision.gameObject.SetActive(false);
+            }
         }
     }
 }

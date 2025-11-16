@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Pet : MonoBehaviour
@@ -22,6 +23,6 @@ public class Pet : MonoBehaviour
 
     private void Shoot()
     {
-        Instantiate(_petBulletPrefab, transform.position, Quaternion.identity);
+        BulletFactory.Instance.MakeSubBullet(transform.position);
     }
 }

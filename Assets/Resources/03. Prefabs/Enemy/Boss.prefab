@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3481400865449114383
+--- !u!1 &1255599401528592517
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,41 +8,43 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3017109906601898851}
-  - component: {fileID: 3778279733521136743}
-  - component: {fileID: 2053118513798219502}
-  - component: {fileID: 6715383308918209743}
-  - component: {fileID: 6852239610760882532}
-  - component: {fileID: 3288657590344684458}
+  - component: {fileID: 326319955617009361}
+  - component: {fileID: 4251304235923244887}
+  - component: {fileID: 2340459631984243642}
+  - component: {fileID: 5251912004211038032}
+  - component: {fileID: 3263861006180918394}
+  - component: {fileID: 91943640609570926}
+  - component: {fileID: 6374647712256677961}
+  - component: {fileID: -2623601722942076249}
   m_Layer: 0
-  m_Name: EnemyBullet
-  m_TagString: Bullet
+  m_Name: Boss
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3017109906601898851
+--- !u!4 &326319955617009361
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3481400865449114383}
+  m_GameObject: {fileID: 1255599401528592517}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &3778279733521136743
+--- !u!212 &4251304235923244887
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3481400865449114383}
+  m_GameObject: {fileID: 1255599401528592517}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -80,33 +82,33 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: -3715560619495883046, guid: 3a492816e6d74e646a6c090ef248f0a8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.58, y: 1.3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &2053118513798219502
+--- !u!50 &2340459631984243642
 Rigidbody2D:
   serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3481400865449114383}
-  m_BodyType: 0
+  m_GameObject: {fileID: 1255599401528592517}
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -118,13 +120,13 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &6715383308918209743
-CircleCollider2D:
+--- !u!61 &5251912004211038032
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3481400865449114383}
+  m_GameObject: {fileID: 1255599401528592517}
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
@@ -153,31 +155,75 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
---- !u!114 &6852239610760882532
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 6.5833335, y: 5.4166665}
+    newSize: {x: 1.58, y: 1.3}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 6.5833335, y: 5.4166665}
+  m_EdgeRadius: 0
+--- !u!114 &3263861006180918394
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3481400865449114383}
+  m_GameObject: {fileID: 1255599401528592517}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fe86667774275b46b02addafde47785, type: 3}
+  m_Script: {fileID: 11500000, guid: 6431b6e1bed1c4546a42227e8c153174, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bulletDamage: 1
-  _bulletSpeed: 5
---- !u!114 &3288657590344684458
+  _itemPrefabs:
+  - {fileID: 7404725851696332271, guid: 8681df92a1b49bc4dbc2e712eeca37f4, type: 3}
+  - {fileID: 5547180440764348431, guid: 48c0b900031d6e246b86e4bef5a70e80, type: 3}
+  - {fileID: 7572252947094923499, guid: 6f9735069843248468aa8ce505de690f, type: 3}
+  _itemSpawnRatios: 140000002800000028000000
+--- !u!114 &91943640609570926
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3481400865449114383}
+  m_GameObject: {fileID: 1255599401528592517}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e4d52fb21d1b8c4d9b201aea819ff0c, type: 3}
+  m_Script: {fileID: 11500000, guid: 796e2bb0f568c6b4f9ea24ff63e7a353, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsFriendly: 0
+  _enemyBullet: {fileID: 3481400865449114383, guid: 8904d6fe0509be44ea24ea8943fb5c5e, type: 3}
+--- !u!114 &6374647712256677961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1255599401528592517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9788f7006c811242bce8d4f4c50ed6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NonCenterHitboxDamageMultiplier: 0
+  _health: 1200
+  _knockBackPower: 0
+  _itemDropRate: 100
+  _explosionPrefab: {fileID: 2433282508537954060, guid: 3ef3ae421f71c5c4e97fe12dc2fc6312, type: 3}
+  _monsterPoint: 3000
+--- !u!114 &-2623601722942076249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1255599401528592517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ad0383107cea574980a4f7d7d60ffde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 1
