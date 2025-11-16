@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class BulletFactory : MonoBehaviour
 {
-    [Header("총알 프리팹")]  // 복사해올 총알 프리팹 게임 오브젝트
+    [Header("총알 프리팹")]
     public GameObject BulletPrefab;
     public GameObject AssistBulletPrefab;
 

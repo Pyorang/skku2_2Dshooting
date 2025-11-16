@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
     [Header("몬스터 점수")]
     [SerializeField] private int _monsterPoint = 100;
 
-    private static readonly Color s_hitColor = new Color(255, 0, 0, 255);
+    private static readonly Color s_hitColor = Color.red;
     private static readonly WaitForSeconds s_changeColorTime = new WaitForSeconds(0.1f);
     private SpriteRenderer _spriteRenderer;
     private Sprite _firstSprite;
